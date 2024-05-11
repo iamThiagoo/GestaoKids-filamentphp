@@ -1,0 +1,58 @@
+===========================
+Estudantes
+    Estudantes
+    Estudantes Endereços
+    Estudantes Contatos
+    Estudantes Responsaveis
+===========================
+
+================
+Professores
+    Professores
+================
+
+=========================
+Feature Sala de Aula
+    Turma
+    Turma_Professores
+    Alunos_Turma
+
+    Chamada_Turma
+        Data
+        Turma_id
+        Aluno_id
+        Professor_id
+        Presente
+=========================
+
+==============================
+Feature Cardápio
+    Servicos -
+        Nome - Manha, Almoco, Tarde
+        Detalhes - Biscoito
+        Status - Ativo/Não
+
+    Servico_Data
+    Cardápio por turma?
+==============================
+
+=============================
+Feature Biblioteca Virtual
+    Biblioteca
+=============================
+
+=============================
+Diário de Classe
+    Nada pensado
+=============================
+
+==============================
+Feature Comunicado
+    Comunicado (Comunicado para todos os pais)
+    Comunicado_Turmas (Comunicado mais especifico, para uma ou mais turmas... mas não para todo mundo)
+    Comunicado_Estudante
+=============================
+
+
+
+

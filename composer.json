@@ -9,9 +9,12 @@
         "bezhansalleh/filament-shield": "^3.2",
         "filament/filament": "3.2.57",
         "hasnayeen/themes": "^3.0",
+        "icetalker/filament-chatgpt-bot": "^1.1",
         "laravel/framework": "^11.0",
         "laravel/tinker": "^2.9",
         "leandrocfe/filament-ptbr-form-fields": "^3.0",
+        "livewire/livewire": "^3.4",
+        "livewire/volt": "^1.0",
         "mansoor/filament-versionable": "^0.0.8",
         "parallax/filament-comments": "^1.2",
         "pxlrbt/filament-spotlight": "^1.2"
@@ -22,8 +25,8 @@
         "laravel/sail": "^1.26",
         "mockery/mockery": "^1.6",
         "nunomaduro/collision": "^8.0",
-        "pestphp/pest": "^2.34",
-        "pestphp/pest-plugin-laravel": "^2.4",
+        "pestphp/pest": "^2.0",
+        "pestphp/pest-plugin-laravel": "^2.0",
         "spatie/laravel-ignition": "^2.4"
     },
     "autoload": {
