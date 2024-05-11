@@ -10,6 +10,7 @@ use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Table;
 use Illuminate\Support\HtmlString;
+use Mohamedsabil83\FilamentFormsTinyeditor\Components\TinyEditor;
 
 class StudentResource extends Resource
 {
@@ -40,12 +41,12 @@ class StudentResource extends Resource
                         ->icon('heroicon-m-academic-cap')
                         ->schema([
                             Forms\Components\TextInput::make('fullname')
-                            //->required()
+                            ->required()
                             ->label('Nome Completo')
                             ->placeholder('Informe o Nome Completo do Aluno'),
 
                             Forms\Components\DatePicker::make('birthday')
-                            //->required()
+                            ->required()
                             ->label('Data de Nascimento'),
 
                             Forms\Components\Radio::make('gender')
@@ -53,22 +54,22 @@ class StudentResource extends Resource
                                 'M' => 'Masculino',
                                 'F' => 'Feminino'
                             ])
-                            //->required()
+                            ->required()
                             ->label('Gênero'),
 
                             Forms\Components\TextInput::make('nacionality')
                             ->default('Brasileiro(a)')
-                            ->label('Nacionalidade'),
-                            //->required(),
+                            ->label('Nacionalidade')
+                            ->required(),
 
                             Forms\Components\TextInput::make('email')
-                            //->required()
+                            ->required()
                             ->rule('email')
                             ->label('E-mail para Acesso ao App')
                             ->placeholder('Informe o E-mail do Aluno/Responsável'),
 
                             Forms\Components\TextInput::make('phone')
-                            //->required()
+                            ->required()
                             ->label('Telefone')
                             ->placeholder('Informe o Telefone do Aluno/Responsável'),
 
@@ -88,27 +89,13 @@ class StudentResource extends Resource
                                 "O-" => "O-"
                             ])->label('Tipo Sanguíneo (Opcional)'),
 
-                            Forms\Components\RichEditor::make('details')
+                            TinyEditor::make('details')
+                            ->minHeight(300)
+                            ->toolbarSticky(true)
+                            ->language('pt')
                             ->label('Observações Extras (Opcional)')
                             ->placeholder('Informe observações extras sobre o Aluno')
                             ->columnSpan('full')
-                            ->toolbarButtons([
-                                'attachFiles',
-                                'blockquote',
-                                'bold',
-                                'bulletList',
-                                'codeBlock',
-                                'h2',
-                                'h3',
-                                'italic',
-                                'link',
-                                'orderedList',
-                                'redo',
-                                'strike',
-                                'underline',
-                                'undo',
-                                'fullscreenenter'
-                            ])
                         ]),
 
                     // Informações Pessoais
@@ -116,10 +103,33 @@ class StudentResource extends Resource
                         ->columns(2)
                         ->icon('heroicon-m-user-group')
                         ->schema([
-                            Forms\Components\TextInput::make('phone2')
+
+                            Forms\Components\TextInput::make('name_responsible')
                             ->required()
-                            ->label('Telefone')
+                            ->label('Nome Completo do Responsável')
                             ->placeholder('Informe o Telefone do Aluno/Responsável'),
+
+                            Forms\Components\TextInput::make('email_responsible')
+                            ->rule('email')
+                            ->required()
+                            ->label('E-mail do Responsável')
+                            ->placeholder('Informe o Telefone do Aluno/Responsável'),
+
+                            Forms\Components\DatePicker::make('birthday_responsible')
+                            ->required()
+                            ->label('Data de Nascimento'),
+
+                            Forms\Components\TextInput::make('phone_responsible')
+                            ->label('Telefone (Opcional)')
+                            ->placeholder('Informe o Telefone do Responsável'),
+
+                            TinyEditor::make('details_responsible')
+                            ->minHeight(200)
+                            ->toolbarSticky(true)
+                            ->language('pt')
+                            ->label('Observações Extras (Opcional)')
+                            ->placeholder('Informe observações extras sobre o Aluno')
+                            ->columnSpan('full')
                         ])
                 ])
                 ->startOnStep(1)

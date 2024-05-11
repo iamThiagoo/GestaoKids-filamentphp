@@ -16,6 +16,7 @@
         "livewire/livewire": "^3.4",
         "livewire/volt": "^1.0",
         "mansoor/filament-versionable": "^0.0.8",
+        "mohamedsabil83/filament-forms-tinyeditor": "^2.3",
         "parallax/filament-comments": "^1.2",
         "pxlrbt/filament-spotlight": "^1.2"
     },
