@@ -17,7 +17,9 @@ use Illuminate\Routing\Middleware\SubstituteBindings;
 use Illuminate\Session\Middleware\AuthenticateSession;
 use Illuminate\Session\Middleware\StartSession;
 use Illuminate\View\Middleware\ShareErrorsFromSession;
-use Illuminate\Support\Facades\Blade;
+use Amendozaaguiar\FilamentRouteStatistics\FilamentRouteStatisticsPlugin;
+use pxlrbt\FilamentSpotlight\SpotlightPlugin;
+use Njxqlus\FilamentProgressbar\FilamentProgressbarPlugin;
 
 class AdminPanelProvider extends PanelProvider
 {
@@ -59,8 +61,11 @@ class AdminPanelProvider extends PanelProvider
             ->authMiddleware([
                 Authenticate::class,
             ])
-            ->plugin(
-                \Hasnayeen\Themes\ThemesPlugin::make()
-            );
+            ->plugins([
+                \Hasnayeen\Themes\ThemesPlugin::make(),
+                SpotlightPlugin::make(),
+                FilamentRouteStatisticsPlugin::make(),
+                FilamentProgressbarPlugin::make()->color('#29b')
+            ]);
     }
 }

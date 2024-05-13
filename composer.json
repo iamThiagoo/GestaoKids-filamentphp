@@ -6,6 +6,7 @@
     "license": "MIT",
     "require": {
         "php": "^8.2",
+        "amendozaaguiar/filament-route-statistics": "^3.0",
         "bezhansalleh/filament-shield": "^3.2",
         "filament/filament": "3.2.57",
         "hasnayeen/themes": "^3.0",
@@ -17,6 +18,7 @@
         "livewire/volt": "^1.0",
         "mansoor/filament-versionable": "^0.0.8",
         "mohamedsabil83/filament-forms-tinyeditor": "^2.3",
+        "njxqlus/filament-progressbar": "^1.0",
         "parallax/filament-comments": "^1.2",
         "pxlrbt/filament-spotlight": "^1.2"
     },

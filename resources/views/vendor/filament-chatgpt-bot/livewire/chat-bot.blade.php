@@ -1,6 +1,6 @@
 <div class="relative w-full">
     <!-- component -->
-    <div class="fixed z-30 cursor-pointer" style="bottom: 20px; right: 20px;" title="Abrir ChatGPT">
+    <div class="fixed z-30 cursor-pointer opacity-90" style="bottom: 20px; right: 20px;" title="Abrir ChatGPT">
         <div class="relative flex items-center justify-center w-12 h-12 p-1 text-white rounded-full" style="background-color: {{ $panelHidden ? '#888' : 'rgb(16, 163, 127)' }};" wire:click="$toggle('panelHidden')" id="btn-chat">
             <x-filament-chatgpt-bot::chatgpt-svg />
         </div>
@@ -56,7 +56,7 @@
             </div>
         </div>
         <div>
-            <div id="messages" class="flex flex-col p-3 space-y-4 overflow-y-auto scrolling-touch scrollbar-thumb-blue scrollbar-thumb-rounded scrollbar-track-blue-lighter scrollbar-w-2">
+            <div id="messages" style="padding: 20px;" class="flex flex-col p-3 space-y-4 overflow-y-auto scrolling-touch scrollbar-thumb-blue scrollbar-thumb-rounded scrollbar-track-blue-lighter scrollbar-w-2">
                 @foreach($messages as $message)
                     @if($message['role'] !== 'system')
                     @if($message['role'] == "assistant")
@@ -96,7 +96,7 @@
                 @endforeach
             </div>
             <div class="px-4 pt-4 mb-2 border-t-2 border-gray-200 sm:mb-0">
-                <div class="py-2 text-sm" style="color:rgb(35, 190, 100)" wire:loading wire:target="sendMessage">Enviando mensagem...</div>
+                <div class="py-2 text-sm" style="color:rgb(11 175 79); padding: 0px 0 18px 0;" wire:loading wire:target="sendMessage">Enviando mensagem...</div>
                 <div class="relative flex flex-col flex-grow w-full py-2 bg-gray-200 rounded-md shadow md:py-3 md:pl-4">
                     <textarea wire:model.defer="question" tabindex="0" data-id="root" style="max-height: 200px; height: 24px; " placeholder="Como posso te ajudar?" class="w-full p-0 pl-2 m-0 bg-transparent border-0 resize-none pr-7 focus:ring-0 focus:outline-none focus:placeholder-gray-400 md:pl-0" id="chat-input"></textarea>
                     <button wire:click="sendMessage" wire:loading.attr="disabled" class="absolute p-1 rounded-md text-gray-500 bottom-1.5 md:bottom-2.5 hover:bg-gray-100 enabled:dark:hover:text-gray-400 disabled:hover:bg-transparent right-1 md:right-2 disabled:opacity-40" title="Enviar mensagem"><svg stroke="currentColor" fill="none" stroke-width="2" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round" class="w-4 h-4 mr-1" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><line x1="22" y1="2" x2="11" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></svg></button>
@@ -106,6 +106,9 @@
     </div>
 
     <style>
+        .opacity-90:hover {
+            opacity: .9;
+        }
         .scrollbar-w-2::-webkit-scrollbar {
             width: 0.5rem;
             height: 0.5rem;
@@ -214,41 +217,6 @@
             el.scrollTop = el.scrollHeight
         })
 
-        window.onkeydown = function(){
-            //shorcut
-            // if(event.ctrlKey && event.keyCode===71){
-            //     //CTRL+G
-            //     event.preventDefault();
-            //     Livewire.emit("ctrl+g");
-            //     return
-            // }
-            if(event.ctrlKey && event.altKey && event.keyCode===90){
-                event.preventDefault();
-                Livewire.emit("ctrl+alt+z");
-                return
-            }
-            if(event.ctrlKey && event.keyCode===83){
-                event.preventDefault();
-                Livewire.emit("ctrl+s");
-                return
-            }
-            if(event.ctrlKey && event.keyCode===82){
-                event.preventDefault();
-                Livewire.emit("ctrl+r");
-                return
-            }
-            if(event.ctrlKey && event.keyCode===80){
-                event.preventDefault();
-                Livewire.emit("ctrl+p");
-                return
-            }
-            if(event.ctrlKey && event.keyCode===68){
-                event.preventDefault();
-                Livewire.emit("ctrl+d");
-                return
-            }
-
-        }
     </script>
 
 </div>

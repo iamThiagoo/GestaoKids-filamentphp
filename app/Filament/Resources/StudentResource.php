@@ -11,6 +11,10 @@ use Filament\Tables;
 use Filament\Tables\Table;
 use Illuminate\Support\HtmlString;
 use Mohamedsabil83\FilamentFormsTinyeditor\Components\TinyEditor;
+use Leandrocfe\FilamentPtbrFormFields\PhoneNumber;
+use Leandrocfe\FilamentPtbrFormFields\Document;
+use Leandrocfe\FilamentPtbrFormFields\Cep;
+use Filament\Forms\Components\TextInput;
 
 class StudentResource extends Resource
 {
@@ -68,12 +72,13 @@ class StudentResource extends Resource
                             ->label('E-mail para Acesso ao App')
                             ->placeholder('Informe o E-mail do Aluno/Responsável'),
 
-                            Forms\Components\TextInput::make('phone')
+                            PhoneNumber::make('phone')
                             ->required()
                             ->label('Telefone')
                             ->placeholder('Informe o Telefone do Aluno/Responsável'),
 
-                            Forms\Components\TextInput::make('cpf')
+                            Document::make('cpf')
+                            ->cpf()
                             ->label('Documento CPF (Opcional)')
                             ->placeholder('Informe o Documento CPF do Aluno'),
 
