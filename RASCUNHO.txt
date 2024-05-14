@@ -4,6 +4,9 @@ Estudantes
     Estudantes Endereços
     Estudantes Contatos
     Estudantes Responsaveis
+
+    StudentDocument
+    StudentTypeDocument
 ===========================
 
 ================
@@ -52,7 +55,3 @@ Feature Comunicado
     Comunicado_Turmas (Comunicado mais especifico, para uma ou mais turmas... mas não para todo mundo)
     Comunicado_Estudante
 =============================
-
-
-
-

@@ -13,8 +13,8 @@ use Illuminate\Support\HtmlString;
 use Mohamedsabil83\FilamentFormsTinyeditor\Components\TinyEditor;
 use Leandrocfe\FilamentPtbrFormFields\PhoneNumber;
 use Leandrocfe\FilamentPtbrFormFields\Document;
-use Leandrocfe\FilamentPtbrFormFields\Cep;
-use Filament\Forms\Components\TextInput;
+use Filament\Forms\Components\Tabs;
+use Filament\Forms\Components\FileUpload;
 
 class StudentResource extends Resource
 {
@@ -109,35 +109,86 @@ class StudentResource extends Resource
                         ->icon('heroicon-m-user-group')
                         ->schema([
 
-                            Forms\Components\TextInput::make('name_responsible')
-                            ->required()
-                            ->label('Nome Completo do Responsável')
-                            ->placeholder('Informe o Telefone do Aluno/Responsável'),
+                            Tabs::make('Tabs')
+                            ->tabs([
+                                Tabs\Tab::make('Adicionar Responsável Primário')
+                                    ->schema([
+                                        Forms\Components\TextInput::make('name_responsible')
+                                        ->required()
+                                        ->label('Nome Completo do Responsável')
+                                        ->placeholder('Informe o Telefone do Aluno/Responsável'),
 
-                            Forms\Components\TextInput::make('email_responsible')
-                            ->rule('email')
-                            ->required()
-                            ->label('E-mail do Responsável')
-                            ->placeholder('Informe o Telefone do Aluno/Responsável'),
+                                        Forms\Components\TextInput::make('email_responsible')
+                                        ->rule('email')
+                                        ->required()
+                                        ->label('E-mail do Responsável')
+                                        ->placeholder('Informe o Telefone do Aluno/Responsável'),
 
-                            Forms\Components\DatePicker::make('birthday_responsible')
-                            ->required()
-                            ->label('Data de Nascimento'),
+                                        Forms\Components\DatePicker::make('birthday_responsible')
+                                        ->required()
+                                        ->label('Data de Nascimento'),
 
-                            Forms\Components\TextInput::make('phone_responsible')
-                            ->label('Telefone (Opcional)')
-                            ->placeholder('Informe o Telefone do Responsável'),
+                                        Forms\Components\TextInput::make('phone_responsible')
+                                        ->label('Telefone')
+                                        ->required()
+                                        ->placeholder('Informe o Telefone do Responsável'),
 
-                            TinyEditor::make('details_responsible')
-                            ->minHeight(200)
-                            ->toolbarSticky(true)
-                            ->language('pt')
-                            ->label('Observações Extras (Opcional)')
-                            ->placeholder('Informe observações extras sobre o Aluno')
-                            ->columnSpan('full')
-                        ])
+                                        TinyEditor::make('details_responsible')
+                                        ->minHeight(200)
+                                        ->toolbarSticky(true)
+                                        ->language('pt')
+                                        ->label('Observações Extras (Opcional)')
+                                        ->placeholder('Informe observações extras sobre o Aluno')
+                                        ->columnSpan('full')
+                                    ]),
+                                Tabs\Tab::make('Responsável Secundário (Opcional)')
+                                    ->schema([
+
+                                        Forms\Components\TextInput::make('name_responsible_secondary')
+                                        ->label('Nome Completo do Responsável')
+                                        ->placeholder('Informe o Telefone do Aluno/Responsável'),
+
+                                        Forms\Components\TextInput::make('email_responsible_secondary')
+                                        ->rule('email')
+                                        ->label('E-mail do Responsável')
+                                        ->placeholder('Informe o Telefone do Responsável'),
+
+                                        Forms\Components\DatePicker::make('birthday_responsible_secondary')
+                                        ->label('Data de Nascimento'),
+
+                                        Forms\Components\TextInput::make('phone_responsible_secondary')
+                                        ->label('Telefone')
+                                        ->placeholder('Informe o Telefone do Responsável'),
+
+                                        TinyEditor::make('details_responsible_secondary')
+                                        ->minHeight(200)
+                                        ->toolbarSticky(true)
+                                        ->language('pt')
+                                        ->label('Observações Extras (Opcional)')
+                                        ->placeholder('Informe observações extras sobre o Aluno')
+                                        ->columnSpan('full')
+
+                                    ]),
+                            ])->columnSpan('full')
+                        ]),
+
+                    // Atribuir Documentos
+                    Forms\Components\Wizard\Step::make('Atribuir Documentos')
+                        ->columns(2)
+                        ->icon('heroicon-m-arrow-down-on-square-stack')
+                        ->schema([
+
+                            FileUpload::make('attachment')
+                            ->label('Certidão de Nascimento')
+                            ->columnSpan('full'),
+
+                            FileUpload::make('image')
+                            ->image()
+                            ->imageEditor()
+
+                        ]),
                 ])
-                ->startOnStep(1)
+                ->startOnStep(3)
                 ->columnSpanFull()
                 ->submitAction(new HtmlString('<button type="submit">Submit</button>'))
             ]);

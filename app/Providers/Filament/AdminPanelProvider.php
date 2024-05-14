@@ -20,6 +20,7 @@ use Illuminate\View\Middleware\ShareErrorsFromSession;
 use Amendozaaguiar\FilamentRouteStatistics\FilamentRouteStatisticsPlugin;
 use pxlrbt\FilamentSpotlight\SpotlightPlugin;
 use Njxqlus\FilamentProgressbar\FilamentProgressbarPlugin;
+use Filament\Navigation\NavigationGroup;
 
 class AdminPanelProvider extends PanelProvider
 {
@@ -32,6 +33,12 @@ class AdminPanelProvider extends PanelProvider
             ->login()
             ->colors([
                 'primary' => Color::Amber,
+            ])
+            ->navigationGroups([
+                NavigationGroup::make()
+                     ->label('Administração'),
+                NavigationGroup::make()
+                    ->label('Alunos'),
             ])
             ->collapsibleNavigationGroups(true)
             ->sidebarCollapsibleOnDesktop()
