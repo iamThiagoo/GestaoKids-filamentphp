@@ -2,9 +2,9 @@
 
 namespace App\Filament\Resources;
 
-use App\Filament\Resources\StudentTypeDocumentResource\Pages;
-use App\Filament\Resources\StudentTypeDocumentResource\RelationManagers;
-use App\Models\StudentTypeDocument;
+use App\Filament\Resources\SchoolEventResource\Pages;
+use App\Filament\Resources\SchoolEventResource\RelationManagers;
+use App\Models\SchoolEvent;
 use Filament\Forms;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
@@ -13,19 +13,20 @@ use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 
-class StudentTypeDocumentResource extends Resource
+class SchoolEventResource extends Resource
 {
-    protected static ?string $model = StudentTypeDocument::class;
+    protected static ?string $model = SchoolEvent::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-tag';
+    protected static ?string $navigationIcon = 'heroicon-o-calendar-days';
+    protected static ?string $slug = 'eventos';
 
-    // Grupo no Menu
+    // Nome do Grupo
     protected static ?string $navigationGroup = 'Administração';
 
     // Termos das páginas
-    protected static ?string $navigationLabel = 'Categorias de Docs. Estudantis';
-    protected static ?string $pluralModelLabel = 'Categorias de Documentos Estudantis';
-    protected static ?string $modelLabel = 'Categoria de Doc. Estudantil';
+    protected static ?string $navigationLabel = 'Eventos Escolares';
+    protected static ?string $pluralModelLabel = 'Eventos Escolares';
+    protected static ?string $modelLabel = 'Evento Escolar';
 
     public static function form(Form $form): Form
     {
@@ -64,9 +65,9 @@ class StudentTypeDocumentResource extends Resource
     public static function getPages(): array
     {
         return [
-            'index' => Pages\ListStudentTypeDocuments::route('/'),
-            'create' => Pages\CreateStudentTypeDocument::route('/create'),
-            'edit' => Pages\EditStudentTypeDocument::route('/{record}/edit'),
+            'index' => Pages\ListSchoolEvent::route('/'),
+            'create' => Pages\CreateSchoolEvent::route('/create'),
+            'edit' => Pages\EditSchoolEvent::route('/{record}/edit'),
         ];
     }
 }

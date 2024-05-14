@@ -35,10 +35,9 @@ class AdminPanelProvider extends PanelProvider
                 'primary' => Color::Amber,
             ])
             ->navigationGroups([
-                NavigationGroup::make()
-                     ->label('Administração'),
-                NavigationGroup::make()
-                    ->label('Alunos'),
+                NavigationGroup::make()->label('Administração'),
+                NavigationGroup::make()->label('Alunos'),
+                NavigationGroup::make()->label('Biblioteca Virtual'),
             ])
             ->collapsibleNavigationGroups(true)
             ->sidebarCollapsibleOnDesktop()
